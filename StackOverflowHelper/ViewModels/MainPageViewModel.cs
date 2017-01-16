@@ -9,6 +9,7 @@ namespace StackOverflowHelper.ViewModels
     public class MainPageViewModel : INotifyPropertyChanged
     {
         private readonly UserRepository _userRepository = new UserRepository(new JsonWebClient());
+        private readonly UserFactory _userFactory = new UserFactory();
         private string _userId = "22656";
         private UserViewModel _userActiveUser;
         private string _status;
@@ -30,19 +31,9 @@ namespace StackOverflowHelper.ViewModels
 
         private async void LoadUserDetails()
         {
-
             var result = await _userRepository.GetUser(_userId);
-            var newViewModel = new UserViewModel
-            {
-                UserName = result.display_name,
-                Reputation = result.reputation,
-                Image = result.profile_image,
-                GoldMedals = result.badge_counts.Gold,
-                SilverMedals = result.badge_counts.Silver,
-                BronzeMedals = result.badge_counts.Bronze
-            };
 
-            ActiveUser = newViewModel;
+            ActiveUser = _userFactory.CreateAndInitializeViewModel(result, ActiveUser);
         }
 
 

@@ -8,10 +8,11 @@ namespace StackOverflowHelper.ViewModels
     {
         private string _userName;
         private int _reputation;
-        private int _goldMedals;
-        private int _silverMedals;
-        private int _bronzeMedals;
+        private MedalViewModel _goldBadges;
+        private MedalViewModel _silverBadges;
+        private MedalViewModel _bronzeBadges;
         private string _image;
+        private int _reputationChange;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -55,33 +56,44 @@ namespace StackOverflowHelper.ViewModels
             }
         }
 
-        public int GoldMedals
+        public MedalViewModel GoldBadges
         {
-            get { return _goldMedals; }
+            get { return _goldBadges; }
             set
             {
-                if (value == _goldMedals) return;
-                _goldMedals = value;
+                if (value == _goldBadges) return;
+                _goldBadges = value;
                 OnPropertyChanged();
             }
         }
-        public int SilverMedals
+        public MedalViewModel SilverBadges
         {
-            get { return _silverMedals; }
+            get { return _silverBadges; }
             set
             {
-                if (value == _silverMedals) return;
-                _silverMedals = value;
+                if (value == _silverBadges) return;
+                _silverBadges = value;
                 OnPropertyChanged();
             }
         }
-        public int BronzeMedals
+        public MedalViewModel BronzeBadges
         {
-            get { return _bronzeMedals; }
+            get { return _bronzeBadges; }
             set
             {
-                if (value == _bronzeMedals) return;
-                _bronzeMedals = value;
+                if (value == _bronzeBadges) return;
+                _bronzeBadges = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int ReputationChange
+        {
+            get { return _reputationChange; }
+            set
+            {
+                if (value == _reputationChange) return;
+                _reputationChange = value;
                 OnPropertyChanged();
             }
         }

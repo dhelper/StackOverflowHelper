@@ -28,13 +28,13 @@
         <Image Grid.Row="2" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Source="{Binding ActiveUser.Image}"/>
         <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="30" Margin="50 ,10" Text="{Binding ActiveUser.Reputation}"/>
         <Border Grid.Row="4" Grid.Column="0" Background="Gold">
-            <TextBlock FontSize="30" Margin="50 ,10" Text="{Binding ActiveUser.GoldMedals}"/>
+            <TextBlock FontSize="30" Margin="50 ,10" Text="{Binding ActiveUser.GoldBadges.Count}"/>
         </Border>
         <Border Grid.Row="4" Grid.Column="1"  Background="Silver">
-            <TextBlock FontSize="30" Margin="50 ,10" Text="{Binding ActiveUser.SilverMedals}"/>
+            <TextBlock FontSize="30" Margin="50 ,10" Text="{Binding ActiveUser.SilverBadges.Count}"/>
         </Border>
         <Border Grid.Row="4" Grid.Column="2" Background="SandyBrown" >
-            <TextBlock  FontSize="30" Margin="50 ,10" Text="{Binding ActiveUser.BronzeMedals}"/>
+            <TextBlock  FontSize="30" Margin="50 ,10" Text="{Binding ActiveUser.BronzeBadges.Count}"/>
         </Border>
         <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" BorderThickness="5" BorderBrush="Black" >
             <TextBlock  FontSize="100" Margin="50 ,10" Text="{Binding Status}"/>

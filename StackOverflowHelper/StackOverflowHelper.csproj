@@ -58,9 +58,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DelegateCommand.cs" />
+    <Compile Include="UserFactory.cs" />
+    <Compile Include="UserConvertor.cs" />
     <Compile Include="Repository\Data\User.cs" />
     <Compile Include="Repository\Data\Rootobject.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="ViewModels\MedalViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
