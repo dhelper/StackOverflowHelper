@@ -5,13 +5,18 @@ namespace StackOverflowHelper
 {
     internal class UserFactory
     {
+        private static bool SameUserAsPrevious(User input, UserViewModel previous)
+        {
+            return previous != null && previous.UserName == input.display_name;
+        }
+
         public UserViewModel CreateAndInitializeViewModel(User input, UserViewModel previous)
         {
             var result = UserConvertor.CreateViewModel(input);
 
             result.ReputationChange = CalculateReputationChange(input, previous);
 
-            if (previous != null)
+            if (SameUserAsPrevious(input, previous))
             {
                 result.GoldBadges.Change = input.badge_counts.Gold - previous.GoldBadges.Count;
                 result.SilverBadges.Change = input.badge_counts.Silver - previous.SilverBadges.Count;
@@ -24,7 +29,7 @@ namespace StackOverflowHelper
 
         private static int CalculateReputationChange(User input, UserViewModel previous)
         {
-            if (previous == null)
+            if (!SameUserAsPrevious(input, previous))
             {
                 return input.reputation_change_day;
             }

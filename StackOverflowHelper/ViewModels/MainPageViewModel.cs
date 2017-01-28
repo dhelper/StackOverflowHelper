@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using StackOverflowHelper.Annotations;
@@ -31,9 +32,16 @@ namespace StackOverflowHelper.ViewModels
 
         private async void LoadUserDetails()
         {
-            var result = await _userRepository.GetUser(_userId);
+            try
+            {
+                var result = await _userRepository.GetUser(_userId);
 
-            ActiveUser = _userFactory.CreateAndInitializeViewModel(result, ActiveUser);
+                ActiveUser = _userFactory.CreateAndInitializeViewModel(result, ActiveUser);
+            }
+            catch (Exception e)
+            {
+                Status = "Error retrieving use details: " + e.Message;
+            }
         }
 
 
