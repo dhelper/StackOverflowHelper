@@ -40,7 +40,8 @@ namespace StackOverflowHelper.ViewModels
             }
             catch (Exception e)
             {
-                Status = "Error retrieving use details: " + e.Message;
+                ActiveUser = null;
+                Status = "Error retrieving user's details: " + e.Message;
             }
         }
 
