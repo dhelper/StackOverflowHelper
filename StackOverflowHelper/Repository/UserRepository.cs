@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -8,9 +9,9 @@ namespace StackOverflowHelper.Repository
 {
     class UserRepository
     {
-        private readonly JsonWebClient _client;
+        private readonly IJsonWebClient _client;
 
-        public UserRepository(JsonWebClient client)
+        public UserRepository(IJsonWebClient client)
         {
             _client = client;
         }
@@ -20,6 +21,10 @@ namespace StackOverflowHelper.Repository
             var url = string.Format("https://api.stackexchange.com/2.1/users/{0}?site=stackoverflow", userId);
 
             var response = await _client.HttpGetUncompressedAsync(url);
+            if (String.IsNullOrEmpty(response))
+            {
+                return null;
+            }
 
             var jobject = JObject.Parse(response);
 

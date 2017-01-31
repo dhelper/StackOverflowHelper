@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace StackOverflowHelper.Repository
 {
-    public class JsonWebClient
+    public class JsonWebClient : IJsonWebClient
     {
         public async Task<WebResponse> HttpGetAsync(WebRequest request)
         {

@@ -58,6 +58,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DelegateCommand.cs" />
+    <Compile Include="Repository\IJsonWebClient.cs" />
     <Compile Include="UserFactory.cs" />
     <Compile Include="UserConvertor.cs" />
     <Compile Include="Repository\Data\User.cs" />
